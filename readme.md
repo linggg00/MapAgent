@@ -40,13 +40,10 @@ graph TD
 
     User([👤 用户发起复杂指令<br>如：暴雪天重卡限时救援]):::user --> PA
 
-    subgraph 🧠 PDR 智能体闭环中枢 (agent_core.py)
+    subgraph PDR_Agent ["🧠 PDR 智能体闭环中枢 (agent_core.py)"]
         PA[🗺️ 规划代理 Planning<br>LLM解析语义 & 生成初始DAG]:::llm
-        
         PA -->|交付路线图| DA[⚙️ 决策代理 Decision<br>注入实时高德数据]:::tool
-        
         DA -->|送审| VAL{📐 物理校验器 Validator<br>限速/限重/路况测算}:::logic
-        
         VAL -->|❌ 校验失败: 违背物理常识| RA[🔍 反思代理 Reflection<br>提取报错原因]:::llm
         RA -.->|携带 Error Prompt 强制重构| PA
     end
