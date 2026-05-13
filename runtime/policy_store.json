@@ -1,0 +1,6 @@
+{
+  "waypoint_strategy": {
+    "global_search": 0.0,
+    "route_search": 0.0
+  }
+}

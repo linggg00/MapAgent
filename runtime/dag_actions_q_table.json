@@ -1,0 +1,8 @@
+{
+  "actions_q_values": {
+    "search_poi": 15.2148,
+    "plan_route": 19.9999,
+    "return_result": -13.125,
+    "get_weather": 19.9872
+  }
+}

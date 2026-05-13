@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MapAgent</title>
+    <link rel="stylesheet" href="/web/styles.css?v=20260514g" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="control-pane" aria-label="路线输入">
+        <div class="brand">
+          <div>
+            <p class="eyebrow">MapAgent</p>
+          </div>
+          <span id="statusBadge" class="badge">待定位</span>
+        </div>
+
+        <label class="field">
+          <span>你想怎么走</span>
+          <textarea id="queryInput" rows="4" placeholder="输入任意出行需求，例如：去最近的医院、导航到深圳湾公园、找附近充电站后回学校"></textarea>
+        </label>
+
+        <div class="gps-row">
+          <label class="field compact">
+            <span>当前经纬度</span>
+            <input id="gpsInput" type="text" placeholder="自动获取中..." />
+          </label>
+          <button id="locateBtn" class="icon-btn" title="重新定位" aria-label="重新定位">
+            <span aria-hidden="true">⌖</span>
+          </button>
+        </div>
+        <p id="addressText" class="address-text hidden">正在获取当前位置...</p>
+
+        <div class="actions">
+          <button id="submitBtn" class="primary">开始规划</button>
+          <button id="demoBtn" class="secondary">填入示例</button>
+        </div>
+
+        <div id="clarificationBox" class="clarification hidden"></div>
+
+        <section class="result" aria-label="规划结果">
+          <div id="narrationBox" class="narration hidden">
+            <span>AI 播报</span>
+            <p id="narrationText"></p>
+          </div>
+          <div class="metric-grid">
+            <div>
+              <span>总距离</span>
+              <strong id="distanceText">--</strong>
+            </div>
+            <div>
+              <span>预计耗时</span>
+              <strong id="etaText">--</strong>
+            </div>
+            <div>
+              <span>红绿灯</span>
+              <strong id="lightsText">--</strong>
+            </div>
+            <div>
+              <span>路况</span>
+              <strong id="roadText">--</strong>
+            </div>
+            <div id="weatherMetric" class="hidden">
+              <span>天气</span>
+              <strong id="weatherText">--</strong>
+            </div>
+          </div>
+          <ol id="stepsList" class="steps"></ol>
+        </section>
+      </section>
+
+      <section class="map-pane" aria-label="地图">
+        <div id="map"></div>
+        <img id="staticMap" class="static-map hidden" alt="地图" />
+        <svg id="fallbackMap" class="fallback-map hidden" role="img" aria-label="路线示意图"></svg>
+        <div id="mapStatus" class="map-status hidden"></div>
+      </section>
+    </main>
+
+    <script src="/web/app.js?v=20260514g"></script>
+  </body>
+</html>
